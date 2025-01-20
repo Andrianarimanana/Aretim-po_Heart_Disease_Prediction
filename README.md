@@ -1,8 +1,6 @@
-#### Aretim-po_Heart_Disease_Prediction
-This repository designed a project to predict heart disease risk comparing 3 ML models, featuring data preprocessing, model training, evaluation, and deployment-ready insights.
 # Aretim-po Prediction (Heart Disease) 
 
-Welcome to the **Aretim-po Prediction (Heart Disease) ** project! This repository provides tools and resources for predicting 
+Welcome to the **Aretim-po Prediction (Heart Disease) ** project! This repository designed a project to predict heart disease risk comparing 3 Machine Learning models, featuring data preprocessing, model training, evaluation, and deployment-ready insights.
 ![Heart Disease Prediction](Image/Young-Myocarditis-Heart-Concept.webp)
 ## Table of Contents
 
