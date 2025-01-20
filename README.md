@@ -14,7 +14,7 @@ The porpuse of this project is a machine learning focused on forcasting
 
 ## Dataset
 
-The repository includes data derived from [EUMETSAT](https://www.eumetsat.int/) [Klein et al. (2018)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017JD027432),
+The repository includes data derived from [UCI Heart Disease Data](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data) 
 
 Dataset Details:
 This dataset is multivariate, containing multiple statistical variables, and is widely used in machine learning research for heart disease prediction and analysis. It is derived from the Cleveland database and includes **14 key attributes** commonly used in published studies.
