@@ -17,6 +17,37 @@ The porpuse of this project is a machine learning focused on forcasting
 The repository includes data derived from [EUMETSAT](https://www.eumetsat.int/) [Klein et al. (2018)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017JD027432),
 
 Dataset Details:
+This dataset is multivariate, containing multiple statistical variables, and is widely used in machine learning research for heart disease prediction and analysis. It is derived from the Cleveland database and includes **14 key attributes** commonly used in published studies.
+
+## Attributes
+The dataset focuses on the following features:
+
+- **Demographics**:
+  - Age
+  - Sex
+- **Clinical Measurements**:
+  - Chest pain type
+  - Resting blood pressure
+  - Serum cholesterol
+  - Fasting blood sugar
+  - Resting electrocardiographic results
+- **Exercise Data**:
+  - Maximum heart rate achieved
+  - Exercise-induced angina
+  - ST depression induced by exercise relative to rest ("oldpeak")
+  - Slope of the ST segment during peak exercise
+- **Other**:
+  - Number of major vessels
+  - Thalassemia
+
+## Purpose
+The dataset is primarily used for:
+
+1. **Prediction**: Determine if a patient has heart disease based on their attributes.
+2. **Exploration**: Analyze the dataset to uncover insights that improve understanding of heart disease.
+
+## Notes
+- The full database contains 76 attributes, but only these 14 are  used .
 
 Files in Repository:
 heart_disease_uci.csv: Contains input features and labels for model training.
