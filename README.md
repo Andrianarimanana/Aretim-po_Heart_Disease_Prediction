@@ -6,6 +6,8 @@ Welcome to the **Aretim-po Prediction (Heart Disease) ** project! This repositor
 
 1. [Overview](#overview)
 2. [Dataset](#dataset)
+3. [Model performance](#model)
+3. [Deploiment](#deploiment)
 3. [Setup Instructions](#setup-instructions)
 
 ## Overview
