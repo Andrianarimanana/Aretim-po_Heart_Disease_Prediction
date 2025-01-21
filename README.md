@@ -51,12 +51,14 @@ The dataset is primarily used for:
 ## Notes
 - The full database contains 76 attributes, but only these 14 are  used .
 
-Files in Repository:
+## Files structure in Repository:
+Date/
 heart_disease_uci.csv: Contains input features and labels for model training.
+
 1. notebook.ipynb :contains 
-                        - Data preparation and data cleaning
-                        - EDA, feature importance analysis
-                        - Model selection process and parameter tuning
+- **Data preparation and data cleaning**
+- **EDA, feature importance analysis**
+- **Model selection process and parameter tuning**
 2. train.py :selected model traianing and saving to file with pickle
 3. predict.py :simple load model and predict , deploiment service with flask
 4. predict-test.py :test the flash app
@@ -91,7 +93,7 @@ The model training process consisted of the following steps:
 - Evaluated the contribution of each variable to the prediction task.
 
 ### 4. Modeling Phase
-Four algorithms were selected for their suitability to the project:
+Three algorithms were selected for their suitability to the project:
 - **Decision Tree**
 - **Random Forest**
 - **XGBoost**
