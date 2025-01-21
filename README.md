@@ -12,7 +12,9 @@ Welcome to the **Aretim-po Prediction or Heart Disease** project! This repositor
 
 ## Overview
 
-The porpuse of this project is a machine learning focused on forcasting 
+The porpuse of this project is a machine learning focused on assessing the risk of heart disease! 
+This repository encompasses a comprehensive workflow to compare three Machine Learning models.
+It includes data preprocessing, model training, performance evaluation, and deployment-ready insights to aid in predicting heart disease risk efficiently and accurately.
 
 ## Dataset
 
