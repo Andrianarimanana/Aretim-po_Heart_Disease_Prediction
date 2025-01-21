@@ -60,7 +60,7 @@ heart_disease_uci.csv: Contains input features and labels for model training.
 - **EDA, feature importance analysis**
 - **Model selection process and parameter tuning**
 2. train.py :selected model traianing and saving to file with pickle
-3. predict.py :simple load model and predict , deploiment service with flask
+3. predict.py :simple load model and predict , **deploiment service with flask**
 4. predict-test.py :test the flash app
 5. Pipfile.lock :
 6. Pipfile :
@@ -132,7 +132,7 @@ To set up this project locally, follow these steps:
    # do prediction
    pipenv run python predict.py
 
-To set up this projet using Docker Container
+To set up this projet using **Docker Container**
 
 1. Build the docker image (make sure docker is already installed):
    ```bash
