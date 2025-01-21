@@ -53,13 +53,54 @@ The dataset is primarily used for:
 
 Files in Repository:
 heart_disease_uci.csv: Contains input features and labels for model training.
-1. notebook.ipynb :
-2. train.py :
-3. predict.py :
-4. predict-test.py :
+1. notebook.ipynb :contains 
+                        - Data preparation and data cleaning
+                        - EDA, feature importance analysis
+                        - Model selection process and parameter tuning
+2. train.py :selected model traianing and saving to file with pickle
+3. predict.py :simple load model and predict , deploiment service with flask
+4. predict-test.py :test the flash app
 5. Pipfile.lock :
 6. Pipfile :
-7. Dockerfile :
+7. Dockerfile :containerization, to create docker image
+
+## Evaluation Metric: ROC AUC Score
+
+The recommended evaluation metric for this project is the **ROC AUC score** (Receiver Operating Characteristic - Area Under the Curve). This metric evaluates the performance of binary classification models by measuring their ability to distinguish between two classes.
+
+### Key Concepts:
+- **ROC Curve**: Plots the **True Positive Rate (TPR)** against the **False Positive Rate (FPR)** at various thresholds.
+- **AUC (Area Under the Curve)**: Represents the area under the ROC curve, providing a single scalar value to summarize the model's performance.
+
+ROC AUC is a reliable and concise metric for assessing classification models.
+
+
+## Model Training
+
+The model training process consisted of the following steps:
+
+### 1. Data Preprocessing
+- Handled missing values appropriately.
+- Transformed column data types to ensure compatibility with machine learning models.
+
+### 2. Exploratory Data Analysis (EDA)
+- Conducted EDA to uncover basic patterns and relationships in the dataset.
+- Identified trends and correlations among key features.
+
+### 3. Feature Importance Analysis
+- Evaluated the contribution of each variable to the prediction task.
+
+### 4. Modeling Phase
+Four algorithms were selected for their suitability to the project:
+- **Decision Tree**
+- **Random Forest**
+- **XGBoost**
+
+### 5. Baseline Model Training
+- Trained baseline models using all features.
+- Optimized hyperparameters for each algorithm.
+- Selected the best baseline model based on its **ROC AUC score**.
+
 
 ## Setup Instructions
 
