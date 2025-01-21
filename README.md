@@ -62,7 +62,7 @@ heart_disease_uci.csv: Contains input features and labels for model training.
       - EDA, feature importance analysis**
       - Model selection process and parameter tuning
 2. **train.py** :selected model traianing and saving to file with pickle
-3. **predict.py ** :simple load model and predict , **deploiment service with flask**
+3. **predict.py** :simple load model and predict , **deploiment service with flask**
 4. **predict-test.py** :test the flash app
 5. **Pipfile.lock** : python dependancy
 6. **Pipfile** : python dependancy
