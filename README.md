@@ -55,15 +55,15 @@ The dataset is primarily used for:
 Date/
 heart_disease_uci.csv: Contains input features and labels for model training.
 
-1. notebook.ipynb :contains 
-- **Data preparation and data cleaning**
-- **EDA, feature importance analysis**
-- **Model selection process and parameter tuning**
-2. train.py :selected model traianing and saving to file with pickle
-3. predict.py :simple load model and predict , **deploiment service with flask**
-4. predict-test.py :test the flash app
-5. Pipfile.lock :
-6. Pipfile :
+1. **notebook.ipynb** :contains 
+- Data preparation and data cleaning
+- EDA, feature importance analysis**
+- Model selection process and parameter tuning
+2. **train.py** :selected model traianing and saving to file with pickle
+3. **predict.py ** :simple load model and predict , **deploiment service with flask**
+4. **predict-test.py** :test the flash app
+5. **Pipfile.lock** : python dependancy
+6. **Pipfile** : python dependancy
 7. Dockerfile :containerization, to create docker image
 
 ## Evaluation Metric: ROC AUC Score
