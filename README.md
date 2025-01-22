@@ -47,11 +47,11 @@ The dataset focuses on the following features:
 ## Target Column: `num`
 - The `num` column represents the predicted attribute for heart disease.
 - Unique values: `[0, 1, 2, 3, 4]`, indicating 5 types of heart diseases.
-      - 0 = no heart disease.
-      - 1 = Mild Heart Disease types.
-      - 2 = Moderate Heart Disease type.
-      - 3 = Severe Heart Disease type.
-      - 4 = Critical Heart Disease type.
+   - 0 = no heart disease.
+   - 1 = Mild Heart Disease types.
+   - 2 = Moderate Heart Disease type.
+   - 3 = Severe Heart Disease type.
+   - 4 = Critical Heart Disease type.
 
 ## Notes
 - The full database contains 76 attributes, but only these 14 are  used .
