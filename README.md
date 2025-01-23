@@ -1,6 +1,6 @@
 # Aretim-po Prediction (Heart Disease) 
 
-Welcome to the **Aretim-po Prediction or Heart Disease** project! This repository designed a project to predict heart disease risk comparing 3 Machine Learning models, featuring data preprocessing, model training, evaluation, and deployment-ready insights.
+Welcome to the **Aretim-po Prediction or Heart Disease** project! This repository designed a project to predict heart disease risk comparing some Machine Learning models, featuring data preprocessing, model training, evaluation, and deployment-ready insights.
 ![Heart Disease Prediction](Image/Young-Myocarditis-Heart-Concept.webp)
 ## Table of Contents
 
@@ -98,10 +98,12 @@ The model training process consisted of the following steps:
 - Evaluated the contribution of each variable to the prediction task.
 
 ### 4. Modeling Phase
-Three algorithms were selected for their suitability to the project:
+Five algorithms were selected for their suitability to the project:
 - **Decision Tree**
 - **Random Forest**
-- **XGBoost**
+- **LogisticRegression**
+- **KNN**
+- **SVC**
 
 ### 5. Baseline Model Training
 - Trained baseline models using all features.

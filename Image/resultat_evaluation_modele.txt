@@ -1,0 +1,132 @@
+resultat evaluation modele ; analyser les resultat suivant pour voir le modele le plus performant : 
+
+Optimizing KNN...
+Best Parameters for KNN: {'n_neighbors': 7, 'weights': 'distance'}
+Best Score for KNN: 0.5774145120934111
+Test Accuracy for KNN: 0.5737704918032787
+
+Classification Report for KNN:
+
+              precision    recall  f1-score   support
+
+           0       0.71      0.84      0.77        80
+           1       0.58      0.54      0.56        54
+           2       0.31      0.17      0.22        24
+           3       0.19      0.26      0.22        19
+           4       0.00      0.00      0.00         6
+
+    accuracy                           0.57       183
+   macro avg       0.36      0.36      0.35       183
+weighted avg       0.54      0.57      0.55       183
+
+Confusion Matrix for KNN:
+[[67 10  1  2  0]
+ [ 7 29  6 12  0]
+ [ 7  6  4  7  0]
+ [ 9  4  1  5  0]
+ [ 4  1  1  0  0]]
+
+RandomForest 
+Best Parameters for RandomForest: {'max_depth': 20, 'min_samples_split': 10, 'n_estimators': 50}
+Best Score for RandomForest: 0.6485070892410342
+Test Accuracy for RandomForest: 0.6120218579234973
+
+Classification Report for RandomForest:
+
+              precision    recall  f1-score   support
+
+           0       0.73      0.90      0.81        80
+           1       0.50      0.59      0.54        54
+           2       0.20      0.04      0.07        24
+           3       0.44      0.37      0.40        19
+           4       0.00      0.00      0.00         6
+
+    accuracy                           0.61       183
+   macro avg       0.37      0.38      0.36       183
+weighted avg       0.54      0.61      0.56       183
+
+Confusion Matrix for RandomForest:
+[[72  6  0  2  0]
+ [16 32  1  5  0]
+ [ 5 16  1  2  0]
+ [ 3  7  2  7  0]
+ [ 2  3  1  0  0]]
+
+Optimizing DecisionTree...
+Best Parameters for DecisionTree: {'max_depth': 10, 'min_samples_split': 10}
+Best Score for DecisionTree: 0.6229357798165138
+Test Accuracy for DecisionTree: 0.5573770491803278
+
+Classification Report for DecisionTree:
+
+              precision    recall  f1-score   support
+
+           0       0.74      0.84      0.78        80
+           1       0.56      0.52      0.54        54
+           2       0.29      0.21      0.24        24
+           3       0.06      0.05      0.06        19
+           4       0.12      0.17      0.14         6
+
+    accuracy                           0.56       183
+   macro avg       0.35      0.36      0.35       183
+weighted avg       0.54      0.56      0.54       183
+
+Confusion Matrix for DecisionTree:
+[[67  6  3  1  3]
+ [14 28  4  7  1]
+ [ 4  7  5  6  2]
+ [ 5  7  5  1  1]
+ [ 1  2  0  2  1]]
+
+Optimizing LogisticRegression...
+Best Parameters for LogisticRegression: {'C': 0.1, 'solver': 'liblinear'}
+Best Score for LogisticRegression: 0.6193327773144287
+Test Accuracy for LogisticRegression: 0.5737704918032787
+
+Classification Report for LogisticRegression:
+
+              precision    recall  f1-score   support
+
+           0       0.68      0.86      0.76        80
+           1       0.50      0.63      0.56        54
+           2       0.20      0.04      0.07        24
+           3       0.11      0.05      0.07        19
+           4       0.00      0.00      0.00         6
+
+    accuracy                           0.57       183
+   macro avg       0.30      0.32      0.29       183
+weighted avg       0.48      0.57      0.51       183
+
+Confusion Matrix for LogisticRegression:
+[[69 11  0  0  0]
+ [17 34  0  3  0]
+ [ 9 12  1  2  0]
+ [ 5  9  4  1  0]
+ [ 1  2  0  3  0]]
+
+Optimizing SVC...
+Best Parameters for SVC: {'C': 0.1, 'kernel': 'linear'}
+Best Score for SVC: 0.6011509591326105
+Test Accuracy for SVC: 0.6010928961748634
+
+Classification Report for SVC:
+
+              precision    recall  f1-score   support
+
+           0       0.71      0.88      0.79        80
+           1       0.51      0.69      0.59        54
+           2       0.33      0.04      0.07        24
+           3       0.20      0.11      0.14        19
+           4       0.00      0.00      0.00         6
+
+    accuracy                           0.60       183
+   macro avg       0.35      0.34      0.32       183
+weighted avg       0.53      0.60      0.54       183
+
+Confusion Matrix for SVC:
+[[70  9  0  1  0]
+ [15 37  0  2  0]
+ [ 8 13  1  2  0]
+ [ 4 11  2  2  0]
+ [ 1  2  0  3  0]]
+
