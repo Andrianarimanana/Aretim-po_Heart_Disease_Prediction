@@ -1,169 +1,367 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# #### Project Aretim-po Prediction or Heart Disease Prediction
-# The porpuse of this project is a machine learning focused on forcasting thunderstorms in northern Madagascar, particularly around Nosy Be. The project aims to provide accurate short-term predictions (0–6 hours) to mitigate risks, protect lives, and support emergency responses in this vulnerable region.
+# #### Project Aretim-po (Heart Disease Prediction)
+# This repository designed a project to predict heart disease risk comparing  ML models, featuring data preprocessing, model training, evaluation, and deployment-ready insights.
 
 # #### Data importation
-import sys
 
-import pickle
 import pandas as pd
 import numpy as np
-import xgboost as xgb
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.feature_extraction import DictVectorizer
-from sklearn.metrics import roc_auc_score
-from sklearn.tree import export_text
-from sklearn.model_selection import train_test_split
+import os
+import sys
+import pickle
+
 import seaborn as sns
+import plotly.express as px
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
 from matplotlib import pyplot as plt
+#get_ipython().run_line_magic('matplotlib', 'inline')
+from matplotlib.colors import ListedColormap
 
-from IPython import get_ipython
+# 3. To preprocess the data
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
+from sklearn.impute import SimpleImputer, KNNImputer
 
-# Initialiser IPython si nécessaire
-ipython = get_ipython()
-if ipython is None:
-    from IPython.terminal.embed import InteractiveShellEmbed
-    ipython = InteractiveShellEmbed()
+# 4. import Iterative imputer
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+
+# 5. Machine Learning
+from sklearn.model_selection import train_test_split,GridSearchCV, cross_val_score
+
+# 6. For Classification task.
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier,RandomForestRegressor
+from xgboost import XGBClassifier
+# from sklearn.ensemble import ExtraTreesClassifier,AdaBoostClassifier
+
+# 7. Metrics
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# 8. Ignore warnings
+import warnings
+warnings.filterwarnings('ignore')
+
 
 train_df = pd.read_csv('./Data/heart_disease_uci.csv')
 
+imputer1 = IterativeImputer(max_iter=10, random_state=42)
 
-# #### Data exploration
+# Fit the imputer on trestbps column
+imputer1.fit(train_df[['trestbps']])
 
-train_df.head(3)
-#train_df.describe()
-print("Data exploration")
+# Transform the data
+train_df['trestbps'] = imputer1.transform(train_df[['trestbps']])
 
-# #### Data Preparation and Features importance
-
-print("------------- Apply feature engineering --------")
-# Apply feature engineering
-
-
-# Define lag features and intervals
+# Check the missing values in trestbps column
+print(f"Missing values in trestbps column: {train_df['trestbps'].isnull().sum()}")
 
 
-train_df.columns
-
-#train_df.describe()
-
-print("------------- Prepare Training data --------")
-# #### Prepare Training data
-
-# Prepare Training data
-feature_cols = [
-    'hour_sin', 'hour_cos', 
-    'distance_x', 'distance_y', 'intensity', 'size', 'distance',
-    'is_peak_cyclone_season', 
-    'cyclone_season_weight', 'peak_cyclone_daytime_interaction', 'size_change_30', 'bearing'
-]
-
-# Add lag columns to feature_cols
-
-print(" --- Split training and validation sets ----")
-# #### Split training and validation sets
+# let's see which columns has missing values
+(train_df.isnull().sum()/ len(train_df)* 100).sort_values(ascending=False)
 
 
-# x_full_train, x_test,y1h_full_train, y1h_test= train_test_split(X, y_1h, test_size=0.2, random_state=11)
-# x_train, x_val, y1h_train, y1h_val= train_test_split(x_full_train,y1h_full_train, test_size=0.25, random_state=11)
+# create an object of iterative imputer 
+imputer2 = IterativeImputer(max_iter=10, random_state=42)
 
-# _, _, y3h_full_train, y3h_test = train_test_split(X, y_3h, test_size=0.2, random_state=11)
-#_, _, y3h_train, y3h_val= train_test_split(x_full_train,y3h_full_train, test_size=0.25, random_state=11)
+# fit transform on ca,oldpeak, thal,chol and thalch columns
+train_df['ca'] = imputer2.fit_transform(train_df[['ca']])
+train_df['oldpeak']= imputer2.fit_transform(train_df[['oldpeak']])
+train_df['chol'] = imputer2.fit_transform(train_df[['chol']])
+train_df['thalch'] = imputer2.fit_transform(train_df[['thalch']])
+# let's check again for missing values
+(train_df.isnull().sum()/ len(train_df)* 100).sort_values(ascending=False)
 
-# #### trainning the Modele
-df_train = x_train.reset_index(drop=True)
-df_val = x_val.reset_index(drop=True)
-df_test = x_test.reset_index(drop=True)
-df_full_train = x_full_train.reset_index(drop=True)
 
-print("trainning the Modele -- model making")
-# ##### Decision Tree
+# find missing values.
+train_df.isnull().sum()[train_df.isnull().sum()>0].sort_values(ascending=False)
 
-train_dicts = df_train.fillna(0).to_dict(orient='records')
-dv = DictVectorizer(sparse=False)
-X_train = dv.fit_transform(train_dicts)
 
-dt_model_1h = DecisionTreeClassifier()
-dt_model_1h.fit(X_train, y1h_train)
+missing_data_cols = train_df.isnull().sum()[train_df.isnull().sum()>0].index.tolist()
 
-val_dicts = df_val.fillna(0).to_dict(orient='records')
-X_val = dv.transform(val_dicts)
+missing_data_cols
 
-y_pred = dt_model_1h.predict_proba(X_val)[:, 1]
-roc_auc_score(y1h_val, y_pred)
+# find categorical Columns
+cat_cols = train_df.select_dtypes(include='object').columns.tolist()
+cat_cols
 
-y_pred = dt_model_1h.predict_proba(X_train)[:, 1]
-roc_auc_score(y1h_train, y_pred)
+# find Numerical Columns
+Num_cols = train_df.select_dtypes(exclude='object').columns.tolist()
+Num_cols
 
-dt_model_1h = DecisionTreeClassifier(max_depth=2)
-dt_model_1h.fit(X_train, y1h_train)
+print(f'categorical Columns: {cat_cols}')
+print(f'numerical Columns: {Num_cols}')
 
-y_pred = dt_model_1h.predict_proba(X_train)[:, 1]
-auc = roc_auc_score(y1h_train, y_pred)
-print('train:', auc)
 
-y_pred = dt_model_1h.predict_proba(X_val)[:, 1]
-auc = roc_auc_score(y1h_val, y_pred)
-print('val:', auc)
+# FInd columns 
+categorical_cols = ['thal', 'ca', 'slope', 'exang', 'restecg','fbs', 'cp', 'sex', 'num']
+bool_cols = ['fbs', 'exang']
+numerical_cols = ['oldpeak', 'thalch', 'chol', 'trestbps', 'age']
 
-# ##### Decision tree Tunning
-# selecting max_depth
-# selecting min_samples_leaf
 
-print(" Decision tree Tunning")
-depths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, None]
-
-for depth in depths: 
-    dt_model_1h = DecisionTreeClassifier(max_depth=depth)
-    dt_model_1h.fit(X_train, y1h_train)
+# ##### Dealing missing Values with Machine learning model
+print("Dealing missing Values with Machine learning model")
+passed_col = categorical_cols
+def impute_categorical_missing_data(passed_col):
     
-    y_pred = dt_model_1h.predict_proba(X_val)[:, 1]
-    auc = roc_auc_score(y1h_val, y_pred)
+    df_null = train_df[train_df[passed_col].isnull()]
+    df_not_null = train_df[train_df[passed_col].notnull()]
+
+    X = df_not_null.drop(passed_col, axis=1)
+    y = df_not_null[passed_col]
     
-    print('%4s -> %.3f' % (depth, auc))
+    other_missing_cols = [col for col in missing_data_cols if col != passed_col]
+    
+    label_encoder = LabelEncoder()
+    for col in X.columns:
+        if X[col].dtype == 'object' or X[col].dtype == 'category':
+            X[col] = label_encoder.fit_transform(X[col])
 
-
-scores = []
-
-for depth in [5, 6, 7]:
-    for s in [1, 5, 10, 15, 20, 500, 100, 200]:
-        dt_model_1h = DecisionTreeClassifier(max_depth=depth, min_samples_leaf=s)
-        dt_model_1h.fit(X_train, y1h_train)
-
-        y_pred = dt_model_1h.predict_proba(X_val)[:, 1]
-        auc = roc_auc_score(y1h_val, y_pred)
+    if passed_col in bool_cols:
+        y = label_encoder.fit_transform(y)
         
-        scores.append((depth, s, auc))
+    iterative_imputer = IterativeImputer(estimator=RandomForestRegressor(random_state=42), add_indicator=True)
 
-columns = ['max_depth', 'min_samples_leaf', 'auc']
-df_scores = pd.DataFrame(scores, columns=columns)
+    for col in other_missing_cols:
+        if X[col].isnull().sum() > 0:
+            col_with_missing_values = X[col].values.reshape(-1, 1)
+            imputed_values = iterative_imputer.fit_transform(col_with_missing_values)
+            X[col] = imputed_values[:, 0]
+        else:
+            pass
+    
+    X_train, x_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
 
-df_scores_pivot = df_scores.pivot(index='min_samples_leaf', columns=['max_depth'], values=['auc'])
-df_scores_pivot.round(3)
+    rf_classifier = RandomForestClassifier()
 
-sns.heatmap(df_scores_pivot, annot=True, fmt=".3f")
-plt.show()
+    rf_classifier.fit(X_train, y_train)
 
-dt_model_1h = DecisionTreeClassifier(max_depth=6, min_samples_leaf=5)
-dt_model_1h.fit(X_train, y1h_train)
+    y_pred = rf_classifier.predict(x_val)
+
+    acc_score = accuracy_score(y_val, y_pred)
+
+    print("The feature '"+ passed_col+ "' has been imputed with", round((acc_score * 100), 2), "accuracy\n")
+
+    X = df_null.drop(passed_col, axis=1)
+
+    for col in X.columns:
+        if X[col].dtype == 'object' or X[col].dtype == 'category':
+            X[col] = label_encoder.fit_transform(X[col])
+
+    for col in other_missing_cols:
+        if X[col].isnull().sum() > 0:
+            col_with_missing_values = X[col].values.reshape(-1, 1)
+            imputed_values = iterative_imputer.fit_transform(col_with_missing_values)
+            X[col] = imputed_values[:, 0]
+        else:
+            pass
+                
+    if len(df_null) > 0: 
+        df_null[passed_col] = rf_classifier.predict(X)
+        if passed_col in bool_cols:
+            df_null[passed_col] = df_null[passed_col].map({0: False, 1: True})
+        else:
+            pass
+    else:
+        pass
+
+    df_combined = pd.concat([df_not_null, df_null])
+    
+    return df_combined[passed_col]
+
+def impute_continuous_missing_data(passed_col):
+    
+    df_null = train_df[train_df[passed_col].isnull()]
+    df_not_null = train_df[train_df[passed_col].notnull()]
+
+    X = df_not_null.drop(passed_col, axis=1)
+    y = df_not_null[passed_col]
+    
+    other_missing_cols = [col for col in missing_data_cols if col != passed_col]
+    
+    label_encoder = LabelEncoder()
+
+    for col in X.columns:
+        if X[col].dtype == 'object' or X[col].dtype == 'category':
+            X[col] = label_encoder.fit_transform(X[col])
+    
+    iterative_imputer = IterativeImputer(estimator=RandomForestRegressor(random_state=42), add_indicator=True)
+
+    for col in other_missing_cols:
+        if X[col].isnull().sum() > 0:
+            col_with_missing_values = X[col].values.reshape(-1, 1)
+            imputed_values = iterative_imputer.fit_transform(col_with_missing_values)
+            X[col] = imputed_values[:, 0]
+        else:
+            pass
+    
+    X_train, x_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    rf_regressor = RandomForestRegressor()
+
+    rf_regressor.fit(X_train, y_train)
+
+    y_pred = rf_regressor.predict(x_val)
+
+    print("MAE =", mean_absolute_error(y_val, y_pred), "\n")
+    print("RMSE =", mean_squared_error(y_val, y_pred, squared=False), "\n")
+    print("R2 =", r2_score(y_val, y_pred), "\n")
+
+    X = df_null.drop(passed_col, axis=1)
+
+    for col in X.columns:
+        if X[col].dtype == 'object' or X[col].dtype == 'category':
+            X[col] = label_encoder.fit_transform(X[col])
+
+    for col in other_missing_cols:
+        if X[col].isnull().sum() > 0:
+            col_with_missing_values = X[col].values.reshape(-1, 1)
+            imputed_values = iterative_imputer.fit_transform(col_with_missing_values)
+            X[col] = imputed_values[:, 0]
+        else:
+            pass
+                
+    if len(df_null) > 0: 
+        df_null[passed_col] = rf_regressor.predict(X)
+    else:
+        pass
+
+    df_combined = pd.concat([df_not_null, df_null])
+    
+    return df_combined[passed_col]
 
 
-print(export_text(dt_model_1h, feature_names=list(dv.get_feature_names_out())))
+train_df.isnull().sum().sort_values(ascending=False)
+
+# impute missing values using our functions
+for col in missing_data_cols:
+    print("Missing Values", col, ":", str(round((train_df[col].isnull().sum() / len(train_df)) * 100, 2))+"%")
+    if col in categorical_cols:
+        train_df[col] = impute_categorical_missing_data(col)
+    elif col in numeric_cols:
+        train_df[col] = impute_continuous_missing_data(col)
+    else:
+        pass
 
 
-# ##### Trainning random forest
-print("Trainning random forest")
+train_df.isnull().sum().sort_values(ascending=False)
 
+
+# Now, all columns are complete without any missing data.
+print("Now, all columns are complete without any missing data.")
+
+# Remove the column because it is an outlier because trestbps cannot be zero.
+train_df=train_df[train_df['trestbps']!=0]
+train_df=train_df[train_df['oldpeak'] >=-1]
+
+# #### Prepare Training data
+print("Prepare Training data")
+# Prepare Training data
+feature_cols = ['thal',
+'slope',
+'fbs',
+'exang',
+'restecg',
+'id',
+'age',
+'sex',
+'dataset',
+'cp',
+'trestbps',
+'chol',
+'thalch',
+'oldpeak',
+'ca'
+]
+X = train_df[feature_cols]
+y = train_df['num']
+
+# Encode the categorical columns
+
+Label_Encoder = LabelEncoder()
+
+for col in X.columns:
+    if X[col].dtype == 'object' or X[col].dtype == 'category':
+        X[col] = Label_Encoder.fit_transform(X[col])
+    else:
+        pass
+
+
+# #### Split training and validation sets
+print("Split training and validation sets")
+x_full_train, x_test,y_full_train, y_test= train_test_split(X, y, test_size=0.2, random_state=11)
+x_train, x_val, y_train, y_val= train_test_split(x_full_train,y_full_train, test_size=0.25, random_state=11)
+
+# #### Train the model
+print("Selecting the final model ")
+
+models = {
+    'XGBoost': XGBClassifier()
+}
+
+param_grids = {
+    'XGBoost': {
+        'learning_rate': 0.075,
+        'max_depth': 5,
+        'n_estimators':50
+    }
+
+}
+x_train=x_full_train
+y_train=y_full_train
+x_val=x_test
+
+y_val=y_test
+param_grids = {
+    'learning_rate': 0.075,
+    'max_depth': 4,
+    'n_estimators': 50
+}
+
+model = XGBClassifier(**param_grids)
+
+# Entraînement du modèle
+model.fit(x_train, y_train)
+
+# Évaluation du modèle
+y_pred = model.predict(x_val)
+# test_accuracy = accuracy_score(y_val, y_pred)
+# print(f"Accuracy: {test_accuracy:.2f}")
+model_name="XGBClassifier"
+test_accuracy = accuracy_score(y_val, y_pred)
+print(f"Test Accuracy for {model_name}: {test_accuracy}\n")
+# Classification Report
+print(f"Classification Report for {model_name}:\n")
+print(classification_report(y_val, y_pred))
+
+# Confusion Matrix
+conf_matrix = confusion_matrix(y_val, y_pred)
+print(f"Confusion Matrix for {model_name}:\n{conf_matrix}")
+# Plot Confusion Matrix
+plt.figure(figsize=(8, 6))
+class_labels = sorted(set(y_val)) 
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=class_labels, yticklabels=class_labels)
+plt.title(f'Confusion Matrix for {model_name}')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+# uncomment the line below if you want to save the plot
+# plt.show()
 
 
 # ##### Save the model
-print("Save the model")
+print("Save the model") 
+
+
 
 # Saving the model with pickle
-with open('model_xboost.bin', 'wb') as file:
-    pickle.dump((dv,model), file)
+with open('model_XGBClassifier.bin', 'wb') as file:
+    pickle.dump((model), file)
 
-print("model at : model_xboost.bin ")
+
+print("Modele saved in model_XGBClassifier.bin .... done")
