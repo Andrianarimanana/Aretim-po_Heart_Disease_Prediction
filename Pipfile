@@ -5,13 +5,13 @@ name = "pypi"
 
 [packages]
 numpy = "*"
+pandas= "*"
 scikit-learn = "==0.24.2"
 flask = "*"
 gunicorn = "*"
-xgboost = "*"
-pickle = "*"
+
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.12"
