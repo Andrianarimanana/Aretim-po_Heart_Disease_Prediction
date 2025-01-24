@@ -4,14 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-numpy = "*"
-pandas= "*"
+pandas = "*"
 scikit-learn = "==0.24.2"
 flask = "*"
 gunicorn = "*"
-
+xgboost = "*"
+numpy = "*"
+"plotly.express" = "*"
+requests = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8.12"
+python_version = "3.8"
+python_full_version = "3.8.10"

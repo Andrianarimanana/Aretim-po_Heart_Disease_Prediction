@@ -8,7 +8,7 @@ COPY ["Pipfile", "Pipfile.lock", "./"]
 
 RUN pipenv install --system --deploy
 
-COPY ["predict.py", "model_xboost.bin", "./"]
+COPY ["predict.py", "model_XGBClassifier.bin", "./"]
 
 EXPOSE 9696
 
