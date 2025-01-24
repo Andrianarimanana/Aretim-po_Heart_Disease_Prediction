@@ -73,13 +73,7 @@ heart_disease_uci.csv: Contains input features and labels for model training.
 
 ## Evaluation Metric: ROC AUC Score
 
-The recommended evaluation metric for this project is the **ROC AUC score** (Receiver Operating Characteristic - Area Under the Curve). This metric evaluates the performance of binary classification models by measuring their ability to distinguish between two classes.
 
-### Key Concepts:
-- **ROC Curve**: Plots the **True Positive Rate (TPR)** against the **False Positive Rate (FPR)** at various thresholds.
-- **AUC (Area Under the Curve)**: Represents the area under the ROC curve, providing a single scalar value to summarize the model's performance.
-
-ROC AUC is a reliable and concise metric for assessing classification models.
 
 
 ## Model Training
