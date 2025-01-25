@@ -108,6 +108,12 @@ To set up this projet using **Docker Container**
 2. Running the docker container:
    ```bash
       docker run -it --rm -p 9696:9696 predict-app
+3. Test the project locally with pipenv
+    ```bash
+   # Test the model
+   pypenv python predict-test.py
+   
+Note: you can chage the parameter/Feature inside the code to make an other prrediction
 
 ## Model performance
 
