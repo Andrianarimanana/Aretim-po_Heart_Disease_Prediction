@@ -86,8 +86,9 @@ heart_disease_uci.csv: Contains input features and labels for model training.
 | **Gradient Boosting**     | `learning_rate=0.01`, `max_depth=5`, `n_estimators=200` | 0.6485                  | 0.6066            | 0.57                   | 0.75                  | 0.16                  | Most balanced model with consistent performance across classes.              |
 
 ---
-
-
+##### Confusion Metrique comparaison 
+![Xboost_GradBoost_KNN_RandomF](Image/Xboost_GradBoost_KNN_RandomF.png)
+![xboost_DecisionT_SVC_LogisticREg](Image/Xboost_DecisionT_SVC_LogisticREg.png)
 ## Model Training
 
 The model training process consisted of the following steps:
