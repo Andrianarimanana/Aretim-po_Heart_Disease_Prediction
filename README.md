@@ -6,9 +6,9 @@ Welcome to the **Aretim-po Prediction or Heart Disease** project! This repositor
 
 1. [Overview](#overview)
 2. [Dataset](#dataset)
-3. [Model performance](#model)
-3. [Deploiment](#deploiment)
 3. [Setup Instructions](#setup-instructions)
+4. [Model performance](#model)
+5. [Deploiment](#deploiment)
 
 ## Overview
 
@@ -71,6 +71,46 @@ heart_disease_uci.csv: Contains input features and labels for model training.
 6. **Pipfile** : python dependancy
 7. **Dockerfile** :containerization, to create docker image
 
+## Setup Instructions
+
+To set up this project locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Andrianarimanana/Aretim-po_Heart_Disease_Prediction
+
+2. Activate virtual environment (make sure pipenv is already installed):
+   ```bash
+   pipenv shell
+
+3. Install Dependencies:
+   ```bash
+   pipenv install
+
+4. Activate the Virtual Environment
+   ```bash
+   pipenv shell
+
+5. Run the project locally with pipenv
+    ```bash
+   # train the model
+   pypenv python train.py
+
+   # do prediction
+   pipenv run python predict.py
+
+To set up this projet using **Docker Container**
+
+1. Build the docker image (make sure docker is already installed):
+   ```bash
+   docker build -t predict-app .
+
+2. Running the docker container:
+   ```bash
+      docker run -it --rm -p 9696:9696 predict-app
+      
+## Model performance
+
 ## Evaluation Metric: Accuracy,Recall, Weighted F1-Score, Confusion metric
 
 ## Model Comparison Table
@@ -115,45 +155,8 @@ Five algorithms were selected for their suitability to the project:
 ### 5. Baseline Model Training
 - Trained baseline models using all features.
 - Optimized hyperparameters for each algorithm.
-- Selected the best baseline model based on its **ROC AUC score**.
+- Selected the best baseline model 
 
 
-## Setup Instructions
-
-To set up this project locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Andrianarimanana/Aretim-po_Heart_Disease_Prediction
-
-2. Activate virtual environment (make sure pipenv is already installed):
-   ```bash
-   pipenv shell
-
-3. Install Dependencies:
-   ```bash
-   pipenv install
-
-4. Activate the Virtual Environment
-   ```bash
-   pipenv shell
-
-5. Run the project locally with pipenv
-    ```bash
-   # train the model
-   pypenv python train.py
-
-   # do prediction
-   pipenv run python predict.py
-
-To set up this projet using **Docker Container**
-
-1. Build the docker image (make sure docker is already installed):
-   ```bash
-   docker build -t predict-app .
-
-2. Running the docker container:
-   ```bash
-      docker run -it --rm -p 9696:9696 predict-app
    
 
