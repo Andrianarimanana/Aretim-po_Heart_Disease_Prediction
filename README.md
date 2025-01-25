@@ -71,9 +71,21 @@ heart_disease_uci.csv: Contains input features and labels for model training.
 6. **Pipfile** : python dependancy
 7. **Dockerfile** :containerization, to create docker image
 
-## Evaluation Metric: ROC AUC Score
+## Evaluation Metric: Accuracy,Recall, Weighted F1-Score, Confusion metric
 
+## Model Comparison Table
 
+| **Model**                 | **Best Parameters**                             | **Validation Accuracy** | **Test Accuracy** | **Weighted F1-Score** | **Class 0 Precision** | **Class 4 F1-Score** | **Highlights**                                                                 |
+|---------------------------|------------------------------------------------|--------------------------|--------------------|------------------------|-----------------------|-----------------------|-------------------------------------------------------------------------------|
+| **K-Nearest Neighbors**   | `n_neighbors=7`, `weights=distance`            | 0.5774                  | 0.5738            | 0.55                   | 0.71                  | 0.00                  | Strong for Class 0, but fails entirely for Class 4.                          |
+| **Random Forest**         | `max_depth=20`, `min_samples_split=10`, `n_estimators=50` | 0.6485                  | 0.6120            | 0.56                   | 0.73                  | 0.08                  | Balanced performance, struggles with minority classes.                       |
+| **Decision Tree**         | `max_depth=10`, `min_samples_split=10`         | 0.6229                  | 0.5574            | 0.54                   | 0.74                  | 0.10                  | Similar to Random Forest but slightly lower overall performance.             |
+| **Logistic Regression**   | `C=0.1`, `solver=liblinear`                    | 0.6193                  | 0.5738            | 0.51                   | 0.68                  | 0.00                  | Performs well on Class 0, but poor for minority classes like Class 4.         |
+| **SVC**                   | `C=0.1`, `kernel=linear`                       | 0.6012                  | 0.6011            | 0.54                   | 0.71                  | 0.06                  | Slightly better than Logistic Regression for minority classes.               |
+| **XGBoost**               | `learning_rate=0.1`, `max_depth=5`, `n_estimators=100` | 0.6375                  | 0.6066            | 0.59                   | 0.80                  | 0.21                  | Best for Class 0 precision and improved Class 3 F1-score.                    |
+| **Gradient Boosting**     | `learning_rate=0.01`, `max_depth=5`, `n_estimators=200` | 0.6485                  | 0.6066            | 0.57                   | 0.75                  | 0.16                  | Most balanced model with consistent performance across classes.              |
+
+---
 
 
 ## Model Training
