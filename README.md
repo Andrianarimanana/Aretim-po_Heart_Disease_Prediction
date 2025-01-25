@@ -108,7 +108,7 @@ To set up this projet using **Docker Container**
 2. Running the docker container:
    ```bash
       docker run -it --rm -p 9696:9696 predict-app
-      
+
 ## Model performance
 
 ## Evaluation Metric: Accuracy,Recall, Weighted F1-Score, Confusion metric
@@ -145,17 +145,23 @@ The model training process consisted of the following steps:
 - Evaluated the contribution of each variable to the prediction task.
 
 ### 4. Modeling Phase
-Five algorithms were selected for their suitability to the project:
+Seven algorithms were selected for their suitability to the project:
 - **Decision Tree**
 - **Random Forest**
 - **LogisticRegression**
 - **KNN**
 - **SVC**
+- **Xboostclassifier**
+- **GradiaentBoost**
 
 ### 5. Baseline Model Training
 - Trained baseline models using all features.
 - Optimized hyperparameters for each algorithm.
 - Selected the best baseline model 
+
+## Deploiement 
+![Deploiment](Image/teste_local_flask.png)
+
 
 
    
