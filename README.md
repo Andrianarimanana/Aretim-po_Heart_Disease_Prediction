@@ -1,4 +1,4 @@
-# Aretim-po Prediction (Heart Disease) 
+# Heart Disease Risk Assessment with Machine Learning 
 
 Welcome to the **Aretim-po Prediction or Heart Disease** project! This repository designed a project to predict heart disease risk comparing some Machine Learning models, featuring data preprocessing, model training, evaluation, and deployment-ready insights.
 ![Heart Disease Prediction](Image/Young-Myocarditis-Heart-Concept.webp)
@@ -15,6 +15,28 @@ Welcome to the **Aretim-po Prediction or Heart Disease** project! This repositor
 The porpuse of this project is a machine learning focused on assessing the risk of heart disease! 
 This repository encompasses a comprehensive workflow to compare three Machine Learning models.
 It includes data preprocessing, model training, performance evaluation, and deployment-ready insights to aid in predicting heart disease risk efficiently and accurately.
+
+## Problem Statement
+Heart disease is one of the leading causes of death worldwide, and early risk assessment is crucial for timely intervention and prevention. However, identifying individuals at risk often relies on manual evaluations and traditional diagnostic methods, which can be time-consuming and inconsistent. The lack of accessible, efficient, and accurate risk prediction tools hampers the ability of healthcare professionals to prioritize and personalize patient care.
+
+## Project Objectives
+1. **Develop a Machine Learning Model:** Create a system capable of accurately predicting the risk of heart disease using structured health data.
+2. **Compare Model Performance:** Evaluate and compare the efficiency and accuracy of three Machine Learning models to identify the most suitable one for deployment.
+3. **Optimize Data Handling:** Implement robust data preprocessing techniques to ensure high-quality inputs for model training.
+4. **Generate Actionable Insights:** Provide clear, deployment-ready insights to support healthcare professionals in risk assessment and decision-making.
+5. **Improve Healthcare Accessibility:** Enable faster, scalable, and reliable heart disease risk predictions for diverse populations.
+6. **Deploy the Model:** 
+   - Initially deploy the model locally using Flask in a Docker container.  
+   - Plan for future deployment in the cloud to ensure scalability and accessibility for a wider audience.
+
+## Purpose
+The purpose of this project is to harness the power of Machine Learning to assess the risk of heart disease. This repository encompasses a comprehensive workflow, including:
+- Data preprocessing
+- Model training
+- Performance evaluation
+- Deployment-ready insights
+
+These steps aim to aid in predicting heart disease risk efficiently and accurately, contributing to improved healthcare outcomes.
 
 ## Dataset
 
@@ -112,7 +134,7 @@ To set up this projet using **Docker Container**
     ```bash
    # Test the model
    pypenv python predict-test.py
-   
+
 Note: you can chage the parameter/Feature inside the code to make an other prrediction
 
 ## Model performance
