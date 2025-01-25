@@ -160,6 +160,7 @@ Seven algorithms were selected for their suitability to the project:
 - Selected the best baseline model 
 
 ## Deploiement 
+Deploy Flask service using Docker and It run Localy
 ![Deploiment](Image/teste_local_flask.png)
 
 
