@@ -77,6 +77,7 @@ The dataset focuses on the following features:
 
 ## Notes
 - The full database contains 76 attributes, but only these 14 are  used .
+- [python 3.8.10](https://www.python.org/downloads/release/python-3810/) required for the project
 
 ## Files structure in Repository:
 Date/
