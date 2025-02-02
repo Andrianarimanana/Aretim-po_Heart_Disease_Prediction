@@ -192,6 +192,10 @@ Seven algorithms were selected for their suitability to the project:
 Deploy Flask service using Docker and It run Localy
 ![Deploiment](Image/teste_local_flask.png)
 
+## Cloud Streamlit
+[Simulation in Strealit](https://0194c674-5312-fe42-ed55-d0b2843b5ea6.share.connect.posit.cloud/) 
+![Stramlit](Image/modele_streamlit_simulation.png)
+
 
 
    
