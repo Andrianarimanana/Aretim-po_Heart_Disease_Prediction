@@ -94,6 +94,8 @@ heart_disease_uci.csv: Contains input features and labels for model training.
 5. **Pipfile.lock** : python dependancy
 6. **Pipfile** : python dependancy
 7. **Dockerfile** :containerization, to create docker image
+8. **app.py** : Application used into the Cloud Streamlit
+9. **requirements.txt** : python dependancy used to deploy the modele into the cloud 
 
 ## Setup Instructions
 
