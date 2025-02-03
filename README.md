@@ -190,13 +190,50 @@ Seven algorithms were selected for their suitability to the project:
 
 ## Deploiement 
 Deploy Flask service using Docker and It run Localy
-![Deploiment](Image/teste_local_flask.png)
 
 ## Cloud Streamlit
-[Simulation in Strealit](https://0194c674-5312-fe42-ed55-d0b2843b5ea6.share.connect.posit.cloud/) 
+[Simulation in Strealit](https://0194c674-5312-fe42-ed55-d0b2843b5ea6.share.connect.posit.cloud/)
+
+![Deploiment](Image/teste_local_flask.png)
+
+To set up this projet using **Streamlit locly and into the Cloud**
+[Deploy a Streamlit Application to Connect Cloud](https://docs.posit.co/connect-cloud/how-to/python/streamlit.html)
+
+1. Create a new repo git and start a new project:
+
+2. Create a virtual environment:
+   ```bash
+      python -m venv venv 
+      source venv/bin/activate  predict-app
+3. Install required packages
+    ```bash
+   pip install -r requirements.txt
+
+4. Preview the application Localy
+   ```bash
+   streamlit run app.py
 ![Stramlit](Image/modele_streamlit_simulation.png)
 
+5. Push to GitHub
+   ```bash
+   git init .
+   git commit -m "first commit"
+   git branch -M main
+   git remote add origin https://github.com/account-name/repo-name.git
+   git push -u origin main
 
+6. Deploy to Posit Connect Cloud
+- [Sign](https://connect.posit.cloud/) in to Connect Cloud.
 
-   
+- Click the Publish icon button on the top of your Portfolio page
+
+- Select Streamlit
+
+- Select the public repository that you created 
+
+- Confirm the branch
+
+- Select app.py as the primary file
+
+- Click Publish 
 

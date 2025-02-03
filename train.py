@@ -11,7 +11,7 @@ import numpy as np
 import os
 import sys
 import pickle
-
+import joblib
 import seaborn as sns
 import plotly.express as px
 from sklearn.experimental import enable_iterative_imputer
@@ -356,9 +356,12 @@ plt.ylabel('True Label')
 
 # ##### Save the model
 print("Save the model") 
-
-
-
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(PROJECT_DIR, "model", "model_XGBClassifier.pkl")
+# Saving the model with pickle
+with open('./model/model_XGBClassifier.pkl', 'wb') as f:
+    joblib.dump(model, f)
+    print('Best model saved!')
 # Saving the model with pickle
 with open('model_XGBClassifier.bin', 'wb') as file:
     pickle.dump((model), file)
