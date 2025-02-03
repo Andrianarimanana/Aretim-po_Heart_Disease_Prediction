@@ -28,7 +28,7 @@ Heart disease is one of the leading causes of death worldwide, and early risk as
 6. **Deploy the Model:** 
    - Initially deploy the model locally using Flask in a Docker container.  
    - Deployment in the cloud [Posit Connect Cloud](https://connect.posit.cloud/)to ensure scalability and accessibility for a wider audience.
-   [Simulation in Streamlit](https://0194c674-5312-fe42-ed55-d0b2843b5ea6.share.connect.posit.cloud/)
+   [To Test The model,  click here , Simulation in Streamlit](https://0194c674-5312-fe42-ed55-d0b2843b5ea6.share.connect.posit.cloud/)
 
 ## Purpose
 The purpose of this project is to harness the power of Machine Learning to assess the risk of heart disease. This repository encompasses a comprehensive workflow, including:
