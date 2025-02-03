@@ -197,7 +197,7 @@ Deploy Flask service using Docker and It run Localy
 
 ![Deploiment](Image/teste_local_flask.png)
 
-To set up this projet using **Streamlit locly and into the Cloud**
+To set up this projet using **Streamlit localy and into the Cloud**
 [Deploy a Streamlit Application to Connect Cloud](https://docs.posit.co/connect-cloud/how-to/python/streamlit.html)
 
 1. Create a new repo git and start a new project:
