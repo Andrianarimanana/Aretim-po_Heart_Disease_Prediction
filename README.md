@@ -239,7 +239,7 @@ To set up this projet using **Streamlit localy and into the Cloud**
 - Click Publish 
 
 ## Note 
-this the mapping used in the featurs encoder. 
+The mapping used in the featurs encoder. 
 
 Colonne : thal
 Classes : ['fixed defect' 'normal' 'reversable defect']
