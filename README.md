@@ -193,11 +193,9 @@ Seven algorithms were selected for their suitability to the project:
 
 ## Deploiement 
 Deploy Flask service using Docker and It run Localy
-
+![Deploiment](Image/teste_local_flask.png)
 ## Cloud Streamlit
 [Simulation in Strealit](https://0194c674-5312-fe42-ed55-d0b2843b5ea6.share.connect.posit.cloud/)
-
-![Deploiment](Image/teste_local_flask.png)
 
 To set up this projet using **Streamlit localy and into the Cloud**
 [Deploy a Streamlit Application to Connect Cloud](https://docs.posit.co/connect-cloud/how-to/python/streamlit.html)
@@ -241,7 +239,7 @@ To set up this projet using **Streamlit localy and into the Cloud**
 - Click Publish 
 
 ## Note 
-this the maping used in the featurs encoder. 
+this the mapping used in the featurs encoder. 
 --------------------
 Colonne : thal
 Classes : ['fixed defect' 'normal' 'reversable defect']
