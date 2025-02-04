@@ -240,3 +240,46 @@ To set up this projet using **Streamlit localy and into the Cloud**
 
 - Click Publish 
 
+## Note 
+this the maping used in the featurs encoder. 
+--------------------
+Colonne : thal
+Classes : ['fixed defect' 'normal' 'reversable defect']
+transforme : [0 1 2]
+--------------------
+--------------------
+Colonne : slope
+Classes : ['downsloping' 'flat' 'upsloping']
+transforme : [0 1 2]
+--------------------
+--------------------
+Colonne : fbs
+Classes : [False True]
+transforme : [0 1]
+--------------------
+--------------------
+Colonne : exang
+Classes : [False True]
+transforme : [0 1]
+--------------------
+--------------------
+Colonne : restecg
+Classes : ['lv hypertrophy' 'normal' 'st-t abnormality']
+transforme : [0 1 2]
+--------------------
+--------------------
+Colonne : sex
+Classes : ['Female' 'Male']
+transforme : [0 1]
+--------------------
+--------------------
+Colonne : dataset
+Classes : ['Cleveland' 'Hungary' 'Switzerland' 'VA Long Beach']
+transforme : [0 1 2 3]
+--------------------
+--------------------
+Colonne : cp
+Classes : ['asymptomatic' 'atypical angina' 'non-anginal' 'typical angina']
+transforme : [0 1 2 3]
+--------------------
+
