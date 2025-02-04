@@ -148,7 +148,7 @@ Note: you can chage the parameter/Feature inside the code to make an other prred
 ## Model Comparison Table
 
 | **Model**                 | **Best Parameters**                             | **Validation Accuracy** | **Test Accuracy** | **Weighted F1-Score** | **Class 0 Precision** | **Class 4 F1-Score** | **Highlights**                                                                 |
-|---------------------------|------------------------------------------------|--------------------------|--------------------|------------------------|-----------------------|-----------------------|-------------------------------------------------------------------------------|
+|-------|--------|------||----|---|---|-------------------|
 | **K-Nearest Neighbors**   | `n_neighbors=7`, `weights=distance`            | 0.5774                  | 0.5738            | 0.55                   | 0.71                  | 0.00                  | Strong for Class 0, but fails entirely for Class 4.                          |
 | **Random Forest**         | `max_depth=20`, `min_samples_split=10`, `n_estimators=50` | 0.6485                  | 0.6120            | 0.56                   | 0.73                  | 0.08                  | Balanced performance, struggles with minority classes.                       |
 | **Decision Tree**         | `max_depth=10`, `min_samples_split=10`         | 0.6229                  | 0.5574            | 0.54                   | 0.74                  | 0.10                  | Similar to Random Forest but slightly lower overall performance.             |
@@ -240,44 +240,37 @@ To set up this projet using **Streamlit localy and into the Cloud**
 
 ## Note 
 this the mapping used in the featurs encoder. 
---------------------
+
 Colonne : thal
 Classes : ['fixed defect' 'normal' 'reversable defect']
 transforme : [0 1 2]
---------------------
---------------------
+
 Colonne : slope
 Classes : ['downsloping' 'flat' 'upsloping']
 transforme : [0 1 2]
---------------------
---------------------
+
 Colonne : fbs
 Classes : [False True]
 transforme : [0 1]
---------------------
---------------------
+
 Colonne : exang
 Classes : [False True]
 transforme : [0 1]
---------------------
---------------------
+
 Colonne : restecg
 Classes : ['lv hypertrophy' 'normal' 'st-t abnormality']
 transforme : [0 1 2]
---------------------
---------------------
+
 Colonne : sex
 Classes : ['Female' 'Male']
 transforme : [0 1]
---------------------
---------------------
+
 Colonne : dataset
 Classes : ['Cleveland' 'Hungary' 'Switzerland' 'VA Long Beach']
 transforme : [0 1 2 3]
---------------------
---------------------
+
 Colonne : cp
 Classes : ['asymptomatic' 'atypical angina' 'non-anginal' 'typical angina']
 transforme : [0 1 2 3]
---------------------
+
 
